@@ -2,13 +2,6 @@
 
 import { useEffect, useState } from "react";
 
-interface PostsProps {
-  id: number;
-  title: string;
-  body: string;
-  userId: number;
-}
-
 export default function Teste() {
   const [posts, setPosts] = useState([]);
 

@@ -1,4 +1,7 @@
 // Server components --> Clients components
+
+import Link from "next/link";
+
 // import Button from "@/components/button";
 interface PostsProps {
   id: number;
@@ -50,6 +53,9 @@ export default async function Posts() {
           <div key={post.id} className="bg-gray-200 p-4 mx-2 rounded-md">
             <h2 className="font-bold">Titulo: {post.title}</h2>
             <p>body: {post.body}</p>
+            <Link className="text-blue-500" href={`/posts/${post.id}`}>
+              Ver detalhes desse post
+            </Link>
           </div>
         ))}
       </div>
