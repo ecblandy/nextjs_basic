@@ -3,19 +3,28 @@
 import Link from "next/link";
 
 // import Button from "@/components/button";
-interface PostsProps {
+export interface PostsProps {
   id: number;
   title: string;
   body: string;
   userId: number;
 }
 
-interface ResponseProps {
+export interface ResponseProps {
   posts: PostsProps[];
 }
 
+export const revalidate = 60;
+
 export default async function Posts() {
-  const response = await fetch("https://dummyjson.com/posts");
+  // Impede de ficar buscando os dados toda hora para renderizar a página. E armazena no cache!
+  // Importante se o conteudo não muda com frequência.
+  const response = await fetch("https://dummyjson.com/posts", {
+    cache: "force-cache",
+    next: {
+      revalidate: 60,
+    },
+  });
   const data: ResponseProps = await response.json();
 
   async function handleFetchPosts() {

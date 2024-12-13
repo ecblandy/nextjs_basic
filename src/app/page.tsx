@@ -18,11 +18,16 @@ export const metadata: Metadata = {
     },
   },
 };
+// Tempo para atualizar a página de forma dinamica --> Deixando de ser statica mas perde em performace.
+export const revalidate = 60;
 
 export default function Home() {
+  const randomNumber = Math.random() * 10;
+
   return (
     <>
       <h1>Página Home</h1>
+      <p>{randomNumber}</p>
     </>
   );
 }
